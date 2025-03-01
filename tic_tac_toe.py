@@ -70,9 +70,18 @@ def make_move(x, y, x_center, y_center):
                 centers[1].append(center)
 
 # Check if someone wins the game
-def check_rows(win=False):
+def check_win(win=False):
     row_centers = [[-350, 200], [-350, 0], [-350, -200], [-150, 200], [-150, 0], 
     [-150, -200], [50, 200], [50, 0], [50, -200]]
+    
+    column_centers = [[-350, 200], [-150, 200], [50, 200], [-350, 0], [-150, 0],
+    [50, 0], [-350, -200], [-150, -200], [50, -200]]
+    
+    diagonal_centers = [[-350, 200], [50, 200], [-150, 0], [50, -200], 
+    [-350, -200]]
+    angles = [-45, 225]
+    x_increments = [-100, 100]
+
     for i in range(2):
         for l in range(3):
             if row_centers[l] in centers[i] and \
@@ -80,26 +89,11 @@ def check_rows(win=False):
             row_centers[l + 6] in centers[i]:
                 draw_line(row_centers[l][0] - 100, row_centers[l][1], 0)
                 win = True
-    return win
-
-def check_columns(win=False):
-    column_centers = [[-350, 200], [-150, 200], [50, 200], [-350, 0], [-150, 0],
-    [50, 0], [-350, -200], [-150, -200], [50, -200]]
-    for i in range(2):
-        for l in range(3):
-            if column_centers[l] in centers[i] and \
+            elif column_centers[l] in centers[i] and \
             column_centers[l + 3] in centers[i] and \
             column_centers[l + 6] in centers[i]:
                 draw_line(column_centers[l][0], column_centers[l][1] + 100, -90)
                 win = True
-    return win
-
-def check_diagonals(win=False):
-    diagonal_centers = [[-350, 200], [50, 200], [-150, 0], [50, -200], 
-    [-350, -200]]
-    angles = [-45, 225]
-    x_increments = [-100, 100]
-    for i in range(2):
         for l in range(2):
             if diagonal_centers[l] in centers[i] and \
             diagonal_centers[2] in centers[i] and \
@@ -111,7 +105,7 @@ def check_diagonals(win=False):
 
 # Write the results of the game
 def last_move():
-    if check_rows() or check_columns() or check_diagonals():
+    if check_win():
         t.penup()
         t.setheading(0)
         t.goto(175, 0)
