@@ -28,6 +28,7 @@ def draw_board():
 
 # Draw circles and crosses
 def draw_circle():
+    s.onclick(None)
     global n_circles
     n_circles += 1
     t.pencolor('blue')
@@ -36,8 +37,10 @@ def draw_circle():
     t.setheading(0)
     t.pendown()
     t.circle(75)
+    s.onclick(click)
 
 def draw_cross():
+    s.onclick(None)
     global n_crosses
     n_crosses += 1
     t.pencolor('red')
@@ -51,6 +54,7 @@ def draw_cross():
     t.setheading(225)
     t.pendown()
     t.forward(sqrt(2) * 150)
+    s.onclick(click)
 
 # Handle clicks
 def make_move(x, y, x_center, y_center):
@@ -73,10 +77,10 @@ def make_move(x, y, x_center, y_center):
 def check_win(win=False):
     row_centers = [[-350, 200], [-350, 0], [-350, -200], [-150, 200], [-150, 0], 
     [-150, -200], [50, 200], [50, 0], [50, -200]]
-    
+
     column_centers = [[-350, 200], [-150, 200], [50, 200], [-350, 0], [-150, 0],
     [50, 0], [-350, -200], [-150, -200], [50, -200]]
-    
+
     diagonal_centers = [[-350, 200], [50, 200], [-150, 0], [50, -200], 
     [-350, -200]]
     angles = [-45, 225]
