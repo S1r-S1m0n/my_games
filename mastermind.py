@@ -15,8 +15,9 @@ while True:
         code += str(randint(0, 9))
 
     # Simbols legend
-    print('''\nS (Strike) = correct digit at the right place
-B (Ball) = correct digit at the wrong place''' )
+    legend = '''\nS (Strike) = correct digit at the right place
+B (Ball) = correct digit at the wrong place'''
+    print(legend)
 
     # Set the number of guess attempts for the user to 9
     n_attempt = 0
