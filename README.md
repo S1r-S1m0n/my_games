@@ -1,4 +1,4 @@
 # my_games
-They are my games. They include:
+They are my games:
 - Mastermind
-- Tic Tac Toe
+- Tic-Tac-Toe
